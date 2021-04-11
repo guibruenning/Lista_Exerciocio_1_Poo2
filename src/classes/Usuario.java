@@ -1,6 +1,6 @@
-package exercicios_lista.exer01.classes;
+package classes;
 
-import exercicios_lista.exer01.cripto.criptografia;
+import cripto.criptografia;
 
 public class Usuario {
     private String usuario;

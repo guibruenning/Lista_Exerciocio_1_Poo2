@@ -1,4 +1,4 @@
-package exercicios_lista.exer01.classes;
+package classes;
 
 import java.util.Arrays;
 import java.util.Date;

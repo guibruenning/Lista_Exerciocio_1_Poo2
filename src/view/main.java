@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package exer01.view;
+package view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author Guilherme Bruenning
  */
-public class Exercicios_lista extends Application {
+public class main extends Application {
     
     
     @Override

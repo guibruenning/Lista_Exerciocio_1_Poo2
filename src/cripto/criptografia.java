@@ -1,4 +1,4 @@
-package exercicios_lista.exer01.cripto;
+package cripto;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
