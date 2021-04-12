@@ -1,8 +1,11 @@
 package classes;
 
-import java.util.Arrays;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Timer;
+import java.util.List;
+
+import util.dataUtil;
 
 public class Funcionario extends Usuario {
 
@@ -15,54 +18,94 @@ public class Funcionario extends Usuario {
 	}
 	private String nome;
 	private String email;
-	private Timer[] HorasTrabalhadas;
-	private float[] valorHoras;
+	private List<Integer> HorasTrabalhadas = new ArrayList<Integer>();
+	private List<Float> valorHoras = new ArrayList<Float>();
 	private Date dataNascimento;
+	
+	public void setUsuario(Usuario user) {
+		super.setUsuario(user.getUsuario());
+		super.setSenhaCrypto(user.getSenha());
+	}
+	
+	
 	public String getNome() {
 		return nome;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public Timer[] getHorasTrabalhadas() {
-		return HorasTrabalhadas;
-	}
-	public float[] getValorHoras() {
-		return valorHoras;
-	}
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public void setHorasTrabalhadas(Timer[] horasTrabalhadas) {
+
+	public List<Integer> getHorasTrabalhadas() {
+		return HorasTrabalhadas;
+	}
+
+	public void setHorasTrabalhadas(List<Integer> horasTrabalhadas) {
 		HorasTrabalhadas = horasTrabalhadas;
 	}
-	public void setValorHoras(float[] valorHoras) {
-		this.valorHoras = valorHoras;
+
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
+
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	
+	public List<Float> getValorHoras() {
+		return valorHoras;
+	}
+
+	public void setValorHoras(List<Float> valorHoras) {
+		this.valorHoras = valorHoras;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("funcionario [nome=");
-		builder.append(nome);
-		builder.append(", email=");
-		builder.append(email);
-		builder.append(", HorasTrabalhadas=");
-		builder.append(Arrays.toString(HorasTrabalhadas));
-		builder.append(", valorHoras=");
-		builder.append(Arrays.toString(valorHoras));
-		builder.append(", dataNascimento=");
-		builder.append(dataNascimento);
-		builder.append("]");
+		builder.append(super.toString());
+		builder.append("| Nome=");
+		builder.append(getNome());
+		builder.append(" | E-mail=");
+		builder.append(getEmail());
+		builder.append("\n| HorasTrabalhadas=");
+		int count = 0;
+		for ( Integer Integer : getHorasTrabalhadas()){
+			builder.append(" | ");
+			builder.append(Integer);
+			builder.append(" | ");
+			count ++ ;
+			if(count%5 == 0 ) {
+				builder.append("\n");
+			}
+		}
+		builder.append(" | valorHoras=");
+		builder.append("\n");
+		count = 0;
+		for ( float valor : getValorHoras()){
+			builder.append(" | ");
+			builder.append(valor);
+			builder.append(" | ");
+			count ++ ;
+			if(count % 5 == 0 ) {
+				builder.append("\n");
+			}
+		}
+		builder.append(" | dataNascimento=");
+		try {
+			builder.append(dataUtil.dateToString(getDataNascimento()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return builder.toString();
 	}
 	

@@ -5,34 +5,19 @@
  */
 package view;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+
+import view.functionsVisuals.Menu;
 
 /**
  *
  * @author Guilherme Bruenning
  */
-public class main extends Application {
+public class main{
     
-    
-    @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLMain.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        launch(args);
-    }
+    	int i = 0;
+    	Menu menu = new Menu(i);
+    	menu.menu();
+	}
     
 }
