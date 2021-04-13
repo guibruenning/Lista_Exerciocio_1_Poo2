@@ -18,8 +18,14 @@ public class Cadastros{
 	public Usuario Login() {
 		Usuario user = new Usuario();
 		
-		System.out.println("Digite um Usuário");
-		String usuario = entrada.nextLine();
+		
+		String usuario = "";
+		do {
+			System.out.println("Digite um Usuário");
+			usuario = entrada.nextLine();
+			if(usuario.length() < 3)
+				System.out.println("Usuário tem que ser maior que 3 caracteres");
+		}while(usuario.length() < 3);
 		String senha;
 		
 		int i = 1;
@@ -32,7 +38,9 @@ public class Cadastros{
 			}else {
 				i = 0; 
 			}
-		}while(i != 0);
+			if(usuario.length() < 3)
+				System.out.println("Usuário tem que ser maior que 3 caracteres");
+		}while(i != 0 || senha.length() < 3);
 		user.setUsuario(usuario);
 		user.setSenha(senha);
 		return user;
@@ -45,10 +53,17 @@ public class Cadastros{
 		Usuario user = Login();
 		fun.setUsuario(user);
 		System.out.println("Digite seu nome");
-		fun.setNome(entrada.nextLine());
-		
+		do {
+			fun.setNome(entrada.nextLine());
+			if(fun.getNome().length() < 3)
+				System.out.println("Usuário tem que ser maior que 3 caracteres");
+		}while(fun.getNome().length() < 3);
 		System.out.println("Digite seu Email");
-		fun.setEmail(entrada.nextLine());
+		do {
+			fun.setEmail(entrada.nextLine());
+			if(fun.getEmail().length() < 3)
+				System.out.println("Usuário tem que ser maior que 3 caracteres");
+		}while(fun.getEmail().length() < 3);
 		
 		System.out.println("Digite sua data de nascimento, Ex: 01/01/2001");
 		try {

@@ -35,9 +35,9 @@ public class Usuario {
     @Override
     public String toString() {
             StringBuilder builder = new StringBuilder();
-            builder.append(" | User=");
+            builder.append("\n| User=");
             builder.append(this.getUsuario());
-            builder.append(" | Pass=");
+            builder.append("\n| Pass=");
             builder.append(this.getSenha());
             return builder.toString();
     }	

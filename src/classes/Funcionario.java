@@ -72,45 +72,51 @@ public class Funcionario extends Usuario {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(super.toString());
-		builder.append("| Nome=");
+		builder.append("\n| Nome=");
 		builder.append(getNome());
-		builder.append(" | E-mail=");
+		builder.append("\n| E-mail=");
 		builder.append(getEmail());
 		builder.append("\n| HorasTrabalhadas=");
-		int count = 0;
-		for ( Integer Integer : getHorasTrabalhadas()){
-			builder.append(" | ");
-			builder.append(Integer);
-			builder.append(" | ");
-			count ++ ;
-			if(count%5 == 0 ) {
-				builder.append("\n");
-			}
-		}
-		builder.append(" | valorHoras=");
-		builder.append("\n");
-		count = 0;
-		for ( float valor : getValorHoras()){
-			builder.append(" | ");
-			builder.append(valor);
-			builder.append(" | ");
-			count ++ ;
-			if(count % 5 == 0 ) {
-				builder.append("\n");
-			}
-		}
-		builder.append(" | dataNascimento=");
+		builder.append(horasTrabalhadas());
+		
+		builder.append("\n| valorHoras=");
+		builder.append(valorHoras());
+		
+		builder.append("\n| dataNascimento=");
 		try {
 			builder.append(dataUtil.dateToString(getDataNascimento()));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return builder.toString();
 	}
 	
+	private String horasTrabalhadas() {
+		StringBuilder builder = new StringBuilder();
+		int count = 0;
+		for ( Integer Integer : getHorasTrabalhadas()){
+			builder.append(" | ");
+			builder.append(Integer);
+			count++;
+			if(count%8 == 0 ) {
+				builder.append("\n");
+			}
+		}
+		return builder.toString();
+	}
 	
-	
-	
+	private String valorHoras() {
+		StringBuilder builder = new StringBuilder();
+		int count = 0;
+		for ( float valor : getValorHoras()){
+			builder.append(" | ");
+			builder.append(valor);
+			count++;
+			if(count % 8 == 0 ) {
+				builder.append("\n");
+			}
+		}
+		return builder.toString();
+	}
 	
 }
