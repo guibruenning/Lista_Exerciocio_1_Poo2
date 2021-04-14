@@ -143,7 +143,10 @@ public class Menu {
 			salarios.remove(count);
 			builder.append("["+i+"] => float(");
 			builder.append(maior[i]);
-			builder.append("), ");
+			if(mostrar == i)
+				builder.append("), ");
+			else
+				builder.append(") ");
 		}
 		builder.append(" }");
 		
@@ -153,21 +156,24 @@ public class Menu {
 		StringBuilder builder = new StringBuilder();
 		int count = 0;
 		float[] menor = new float[mostrar];
+		builder.append("Array("+mostrar+"){ ");
 		for(int i = 0; i < mostrar; i++) {
-			menor[i] = salarios.get(0);
+			menor[i] = salarios.get(i);
 			for (int j = 0; j < salarios.size();j++) {
 				if(menor[i] > salarios.get(j)) {
 					menor[i] = salarios.get(j);
-					count = salarios.hashCode();
+					count = j;
 				}
 			}
-			salarios.remove(menor[i]);
-			builder.append(" ");
+			salarios.remove(count);
+			builder.append("["+i+"] => float(");
 			builder.append(menor[i]);
-			if(i % 5 == 0) {
-				builder.append("\n");
-			}
+			if(mostrar == i)
+				builder.append("), ");
+			else
+				builder.append(") ");
 		}
+		builder.append(" }");
 		
 		return builder.toString();
 	}
