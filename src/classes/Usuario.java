@@ -1,6 +1,8 @@
 package classes;
 
-import cripto.criptografia;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+
 
 public class Usuario {
     private String usuario;
@@ -25,13 +27,24 @@ public class Usuario {
             this.usuario = usuario;
     }
     public void setSenha(String senha) {
-            this.senha = criptografia.SHA1(senha);
+            this.senha = SHA1(senha);
     }
     public void setSenhaCrypto(String senha) {
         this.senha = senha;
     }
 
 
+	private String SHA1(String usuario) {
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-1");
+	        digest.reset();
+	        digest.update(usuario.getBytes("utf8"));
+	        usuario = String.format("%040x", new BigInteger(1, digest.digest()));
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return usuario;
+	}
     @Override
     public String toString() {
             StringBuilder builder = new StringBuilder();
